@@ -380,6 +380,12 @@ end = perf_counter()
 elapsed_time = end - start
 print(f'Time elapsed for selection sort is {elapsed_time} seconds.')
 
+start = perf_counter()
+heap_sort(data)
+end = perf_counter()
+elapsed_time = end - start
+print(f'Time elapsed for heap sort is {elapsed_time} seconds.')
+
 input_sizes = []
 python_sort_times = []
 merge_sort_times = []
@@ -389,7 +395,7 @@ qs_sort_times = []
 qs10_sort_times = []
 qs30_sort_times = []    
 qs50_sort_times = []  
-for size in range(2):
+for size in range(1000,30000 + 1,1000):
     data = []
     while len(data) < size:
         data.append(random.randint(1, size*10))
@@ -417,18 +423,18 @@ for size in range(1000,30000 + 1,1000):
 
     merge_sort_times.append(elapsed_time)
 
-##for size in range(1000,30000 + 1,1000):
-##    data = []
-##    while len(data) < size:
-##        data.append(random.randint(1, size*10))
-##    
-##    # compute elapsed time
-##    start = perf_counter()
-##    selection_sort(data)
-##    end = perf_counter()
-##    elapsed_time = end - start
-##
-##    selection_sort_times.append(elapsed_time)
+for size in range(1000,30000 + 1,1000):
+    data = []
+    while len(data) < size:
+        data.append(random.randint(1, size*10))
+    
+    # compute elapsed time
+    start = perf_counter()
+    selection_sort(data)
+    end = perf_counter()
+    elapsed_time = end - start
+
+    selection_sort_times.append(elapsed_time)
 
 for size in range(1000,30000 + 1,1000):
     data = []
@@ -495,13 +501,13 @@ for size in range(2):
 
     qs50_sort_times.append(elapsed_time)
 
-##plt.plot(input_sizes, python_sort_times)
-#plt.plot(input_sizes, merge_sort_times) #q6. line blue
-##plt.plot(input_sizes, selection_sort_times)
-#plt.plot(input_sizes, heap_sort_times) #q6. orange line
-plt.plot(input_sizes, qs_sort_times) #q6. green line, blue line
-plt.plot(input_sizes, qs10_sort_times)#q6. orange line
-plt.plot(input_sizes, qs30_sort_times)#q6. green line
-plt.plot(input_sizes, qs50_sort_times) #q6. red linex
+plt.plot(input_sizes, python_sort_times)#blue
+plt.plot(input_sizes, merge_sort_times) #orange
+plt.plot(input_sizes, selection_sort_times)#green
+plt.plot(input_sizes, heap_sort_times)#red
+#plt.plot(input_sizes, qs_sort_times) #q6. green line, blue line
+#plt.plot(input_sizes, qs10_sort_times)#q6. orange line
+#plt.plot(input_sizes, qs30_sort_times)#q6. green line
+#plt.plot(input_sizes, qs50_sort_times) #q6. red line
 plt.show()
 
